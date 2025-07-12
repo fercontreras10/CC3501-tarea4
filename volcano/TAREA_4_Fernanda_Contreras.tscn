@@ -1,0 +1,216 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://volcano_slot0_albedo_bump.packed_tex" type="Texture" id=1]
+[ext_resource path="res://T_data/data.hterrain" type="Resource" id=2]
+[ext_resource path="res://volcano_slot2_albedo_bump.packed_tex" type="Texture" id=3]
+[ext_resource path="res://Fire.tres" type="Gradient" id=4]
+[ext_resource path="res://SmokeGradient.tres" type="Gradient" id=5]
+[ext_resource path="res://volcano_slot1_normal_roughness.packed_tex" type="Texture" id=6]
+[ext_resource path="res://addons/zylann.hterrain/tools/icons/icon_detail_layer_node.svg" type="Texture" id=7]
+[ext_resource path="res://volcano_slot2_normal_roughness.packed_tex" type="Texture" id=8]
+[ext_resource path="res://volcano_slot1_albedo_bump.packed_tex" type="Texture" id=9]
+[ext_resource path="res://volcano_slot0_normal_roughness.packed_tex" type="Texture" id=10]
+[ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=11]
+[ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=12]
+[ext_resource path="res://addons/zylann.hterrain/hterrain_detail_layer.gd" type="Script" id=13]
+[ext_resource path="res://kloppenheim_02_4k.exr" type="Texture" id=14]
+[ext_resource path="res://Smoke30Frames_0.png" type="Texture" id=15]
+
+[sub_resource type="PanoramaSky" id=21]
+radiance_size = 1
+panorama = ExtResource( 14 )
+
+[sub_resource type="Environment" id=20]
+background_mode = 2
+background_sky = SubResource( 21 )
+background_sky_custom_fov = 117.4
+background_color = Color( 0.117647, 0.141176, 0.223529, 1 )
+background_energy = 2.91
+ambient_light_color = Color( 0.882353, 0.870588, 0.639216, 1 )
+fog_enabled = true
+fog_color = Color( 0.501961, 0.6, 0.701961, 1 )
+fog_sun_amount = 0.81
+tonemap_mode = 4
+tonemap_exposure = 0.24
+tonemap_white = 7.1
+glow_enabled = true
+
+[sub_resource type="Resource" id=19]
+script = ExtResource( 12 )
+mode = 0
+textures = [ [ ExtResource( 1 ), ExtResource( 9 ), ExtResource( 3 ) ], [ ExtResource( 10 ), ExtResource( 6 ), ExtResource( 8 ) ] ]
+
+[sub_resource type="GradientTexture" id=22]
+gradient = ExtResource( 4 )
+
+[sub_resource type="Curve" id=23]
+_data = [ Vector2( 0.522346, 0.0630631 ), 0.0, 0.0, 0, 0, Vector2( 0.804469, 0.977286 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=24]
+curve = SubResource( 23 )
+
+[sub_resource type="ParticlesMaterial" id=25]
+trail_divisor = 30
+direction = Vector3( 7, 30, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+initial_velocity_random = 0.1
+angular_velocity = 100.0
+angular_velocity_random = 1.0
+linear_accel = 150.0
+linear_accel_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale_random = 0.8
+scale_curve = SubResource( 24 )
+color_ramp = SubResource( 22 )
+hue_variation_random = 1.0
+anim_speed = 2.0
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[sub_resource type="SpatialMaterial" id=26]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 6
+particles_anim_v_frames = 5
+particles_anim_loop = false
+albedo_texture = ExtResource( 15 )
+
+[sub_resource type="QuadMesh" id=27]
+material = SubResource( 26 )
+size = Vector2( 22, 22 )
+
+[sub_resource type="GradientTexture" id=28]
+gradient = ExtResource( 5 )
+
+[sub_resource type="Curve" id=29]
+_data = [ Vector2( 0.298883, 0.00584507 ), 0.0, 0.0, 0, 0, Vector2( 0.653631, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0418812 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=30]
+curve = SubResource( 29 )
+
+[sub_resource type="ParticlesMaterial" id=31]
+emission_shape = 1
+emission_sphere_radius = 0.3
+direction = Vector3( 15, 20, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.0
+initial_velocity_random = 0.5
+angular_velocity = 40.0
+angular_velocity_random = 1.0
+linear_accel = 30.0
+linear_accel_random = 1.0
+radial_accel = 9.0
+radial_accel_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale = 1.2
+scale_random = 1.0
+scale_curve = SubResource( 30 )
+color_ramp = SubResource( 28 )
+anim_speed = 1.0
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[sub_resource type="SpatialMaterial" id=32]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 6
+particles_anim_v_frames = 5
+particles_anim_loop = false
+albedo_texture = ExtResource( 15 )
+
+[sub_resource type="QuadMesh" id=33]
+material = SubResource( 32 )
+size = Vector2( 22, 22 )
+
+[node name="World" type="Spatial"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -98.326, -0.5, -103.449 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 231.594, 90.6579, 540.694 )
+environment = SubResource( 20 )
+fov = 65.3
+size = 215.818
+near = 0.03
+far = 316.3
+
+[node name="HTerrain" type="Spatial" parent="."]
+script = ExtResource( 11 )
+ambient_wind = 0.429
+lod_scale = 2.466
+_terrain_data = ExtResource( 2 )
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource( 19 )
+render_layers = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = false
+shader_params/u_tile_reduction = Plane( 0, 0, 0, 0 )
+
+[node name="HTerrainDetailLayer" type="Spatial" parent="HTerrain"]
+script = ExtResource( 13 )
+__meta__ = {
+"_editor_icon": ExtResource( 7 )
+}
+shader_params/u_globalmap_tint_bottom = null
+shader_params/u_globalmap_tint_top = null
+shader_params/u_bottom_ao = null
+shader_params/u_instance_scale = Vector3( 1, 1, 1 )
+
+[node name="HTerrainDetailLayer2" type="Spatial" parent="HTerrain"]
+script = ExtResource( 13 )
+__meta__ = {
+"_editor_icon": ExtResource( 7 )
+}
+layer_index = 1
+shader_params/u_globalmap_tint_bottom = null
+shader_params/u_globalmap_tint_top = null
+shader_params/u_bottom_ao = null
+shader_params/u_instance_scale = Vector3( 1, 1, 1 )
+
+[node name="HTerrainDetailLayer3" type="Spatial" parent="HTerrain"]
+script = ExtResource( 13 )
+__meta__ = {
+"_editor_icon": ExtResource( 7 )
+}
+layer_index = 2
+shader_params/u_globalmap_tint_bottom = null
+shader_params/u_globalmap_tint_top = null
+shader_params/u_bottom_ao = null
+shader_params/u_instance_scale = Vector3( 1, 1, 1 )
+
+[node name="fire" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 224.458, 161.825, 265.869 )
+amount = 500
+lifetime = 0.5
+randomness = 0.8
+local_coords = false
+draw_order = 2
+process_material = SubResource( 25 )
+draw_pass_1 = SubResource( 27 )
+
+[node name="humo" type="Particles" parent="fire"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.6594, 0 )
+amount = 100
+lifetime = 2.0
+explosiveness = 0.2
+randomness = 1.0
+local_coords = false
+draw_order = 2
+process_material = SubResource( 31 )
+draw_pass_1 = SubResource( 33 )

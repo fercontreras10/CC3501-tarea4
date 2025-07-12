@@ -1,0 +1,17 @@
+# .gitignore
+*.stex
+*.exr
+*.mesh
+*.import
+*.zip
+*.jpg
+*.png
+*.svg
+.DS_Store
+volcano/.import/
+volcano/assets/
+volcano/T_data/
+volcano/Grass*
+volcano/Rock*
+volcano/Snow*
+volcano/Sky*
